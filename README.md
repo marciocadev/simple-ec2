@@ -1,8 +1,8 @@
 # simple-ec2
 
-https://dev.to/emmanuelnk/part-3-simple-ec2-instance-awesome-aws-cdk-37ia
+[ex1](https://dev.to/emmanuelnk/part-3-simple-ec2-instance-awesome-aws-cdk-37ia)
 
-https://bobbyhadz.com/blog/aws-cdk-ec2-instance-example
+[ex2](https://bobbyhadz.com/blog/aws-cdk-ec2-instance-example)
 
 
 ```
