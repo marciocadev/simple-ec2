@@ -1,4 +1,4 @@
-# replace this
+# simple-ec2
 
 https://dev.to/emmanuelnk/part-3-simple-ec2-instance-awesome-aws-cdk-37ia
 
