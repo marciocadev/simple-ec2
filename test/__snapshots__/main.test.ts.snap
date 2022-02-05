@@ -1,0 +1,458 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Snapshot 1`] = `
+Object {
+  "Outputs": Object {
+    "simpleinstante1output": Object {
+      "Value": Object {
+        "Fn::GetAtt": Array [
+          "simpleinstante1EFECA863",
+          "PublicIp",
+        ],
+      },
+    },
+  },
+  "Parameters": Object {
+    "BootstrapVersion": Object {
+      "Default": "/cdk-bootstrap/hnb659fds/version",
+      "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]",
+      "Type": "AWS::SSM::Parameter::Value<String>",
+    },
+    "SsmParameterValueawsserviceamiamazonlinuxlatestamzn2amihvmx8664gp2C96584B6F00A464EAD1953AFF4B05118Parameter": Object {
+      "Default": "/aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2",
+      "Type": "AWS::SSM::Parameter::Value<AWS::EC2::Image::Id>",
+    },
+  },
+  "Resources": Object {
+    "VPCB9E5F0B4": Object {
+      "Properties": Object {
+        "CidrBlock": "10.0.0.0/16",
+        "EnableDnsHostnames": true,
+        "EnableDnsSupport": true,
+        "InstanceTenancy": "default",
+        "Tags": Array [
+          Object {
+            "Key": "Name",
+            "Value": "test/VPC",
+          },
+        ],
+      },
+      "Type": "AWS::EC2::VPC",
+    },
+    "VPCIGWB7E252D3": Object {
+      "Properties": Object {
+        "Tags": Array [
+          Object {
+            "Key": "Name",
+            "Value": "test/VPC",
+          },
+        ],
+      },
+      "Type": "AWS::EC2::InternetGateway",
+    },
+    "VPCVPCGW99B986DC": Object {
+      "Properties": Object {
+        "InternetGatewayId": Object {
+          "Ref": "VPCIGWB7E252D3",
+        },
+        "VpcId": Object {
+          "Ref": "VPCB9E5F0B4",
+        },
+      },
+      "Type": "AWS::EC2::VPCGatewayAttachment",
+    },
+    "VPCasteriskSubnet1DefaultRoute377544B7": Object {
+      "DependsOn": Array [
+        "VPCVPCGW99B986DC",
+      ],
+      "Properties": Object {
+        "DestinationCidrBlock": "0.0.0.0/0",
+        "GatewayId": Object {
+          "Ref": "VPCIGWB7E252D3",
+        },
+        "RouteTableId": Object {
+          "Ref": "VPCasteriskSubnet1RouteTable23B73BA2",
+        },
+      },
+      "Type": "AWS::EC2::Route",
+    },
+    "VPCasteriskSubnet1RouteTable23B73BA2": Object {
+      "Properties": Object {
+        "Tags": Array [
+          Object {
+            "Key": "Name",
+            "Value": "test/VPC/asteriskSubnet1",
+          },
+        ],
+        "VpcId": Object {
+          "Ref": "VPCB9E5F0B4",
+        },
+      },
+      "Type": "AWS::EC2::RouteTable",
+    },
+    "VPCasteriskSubnet1RouteTableAssociationFD2182F2": Object {
+      "Properties": Object {
+        "RouteTableId": Object {
+          "Ref": "VPCasteriskSubnet1RouteTable23B73BA2",
+        },
+        "SubnetId": Object {
+          "Ref": "VPCasteriskSubnet1SubnetEE53BCBC",
+        },
+      },
+      "Type": "AWS::EC2::SubnetRouteTableAssociation",
+    },
+    "VPCasteriskSubnet1SubnetEE53BCBC": Object {
+      "Properties": Object {
+        "AvailabilityZone": Object {
+          "Fn::Select": Array [
+            0,
+            Object {
+              "Fn::GetAZs": "",
+            },
+          ],
+        },
+        "CidrBlock": "10.0.0.0/24",
+        "MapPublicIpOnLaunch": true,
+        "Tags": Array [
+          Object {
+            "Key": "aws-cdk:subnet-name",
+            "Value": "asterisk",
+          },
+          Object {
+            "Key": "aws-cdk:subnet-type",
+            "Value": "Public",
+          },
+          Object {
+            "Key": "Name",
+            "Value": "test/VPC/asteriskSubnet1",
+          },
+        ],
+        "VpcId": Object {
+          "Ref": "VPCB9E5F0B4",
+        },
+      },
+      "Type": "AWS::EC2::Subnet",
+    },
+    "VPCasteriskSubnet2DefaultRoute9650F4DB": Object {
+      "DependsOn": Array [
+        "VPCVPCGW99B986DC",
+      ],
+      "Properties": Object {
+        "DestinationCidrBlock": "0.0.0.0/0",
+        "GatewayId": Object {
+          "Ref": "VPCIGWB7E252D3",
+        },
+        "RouteTableId": Object {
+          "Ref": "VPCasteriskSubnet2RouteTable01067F80",
+        },
+      },
+      "Type": "AWS::EC2::Route",
+    },
+    "VPCasteriskSubnet2RouteTable01067F80": Object {
+      "Properties": Object {
+        "Tags": Array [
+          Object {
+            "Key": "Name",
+            "Value": "test/VPC/asteriskSubnet2",
+          },
+        ],
+        "VpcId": Object {
+          "Ref": "VPCB9E5F0B4",
+        },
+      },
+      "Type": "AWS::EC2::RouteTable",
+    },
+    "VPCasteriskSubnet2RouteTableAssociation781F3620": Object {
+      "Properties": Object {
+        "RouteTableId": Object {
+          "Ref": "VPCasteriskSubnet2RouteTable01067F80",
+        },
+        "SubnetId": Object {
+          "Ref": "VPCasteriskSubnet2Subnet7959E1B2",
+        },
+      },
+      "Type": "AWS::EC2::SubnetRouteTableAssociation",
+    },
+    "VPCasteriskSubnet2Subnet7959E1B2": Object {
+      "Properties": Object {
+        "AvailabilityZone": Object {
+          "Fn::Select": Array [
+            1,
+            Object {
+              "Fn::GetAZs": "",
+            },
+          ],
+        },
+        "CidrBlock": "10.0.1.0/24",
+        "MapPublicIpOnLaunch": true,
+        "Tags": Array [
+          Object {
+            "Key": "aws-cdk:subnet-name",
+            "Value": "asterisk",
+          },
+          Object {
+            "Key": "aws-cdk:subnet-type",
+            "Value": "Public",
+          },
+          Object {
+            "Key": "Name",
+            "Value": "test/VPC/asteriskSubnet2",
+          },
+        ],
+        "VpcId": Object {
+          "Ref": "VPCB9E5F0B4",
+        },
+      },
+      "Type": "AWS::EC2::Subnet",
+    },
+    "simpleec2roleACB147DC": Object {
+      "Properties": Object {
+        "AssumeRolePolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": Object {
+                "Service": Object {
+                  "Fn::Join": Array [
+                    "",
+                    Array [
+                      "ec2.",
+                      Object {
+                        "Ref": "AWS::URLSuffix",
+                      },
+                    ],
+                  ],
+                },
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "simpleinstance1sg1026C7DF": Object {
+      "Properties": Object {
+        "GroupDescription": "test/simple-instance-1-sg",
+        "GroupName": "simple-instance-1-sg",
+        "SecurityGroupEgress": Array [
+          Object {
+            "CidrIp": "0.0.0.0/0",
+            "Description": "Allow all outbound traffic by default",
+            "IpProtocol": "-1",
+          },
+        ],
+        "SecurityGroupIngress": Array [
+          Object {
+            "CidrIp": "0.0.0.0/0",
+            "Description": "Allow SSH Access from Internet",
+            "FromPort": 22,
+            "IpProtocol": "tcp",
+            "ToPort": 22,
+          },
+          Object {
+            "CidrIp": "0.0.0.0/0",
+            "Description": "Allow HTTP Access from Internet",
+            "FromPort": 80,
+            "IpProtocol": "tcp",
+            "ToPort": 80,
+          },
+          Object {
+            "CidrIp": "0.0.0.0/0",
+            "Description": "Allow HTTPS Access from Internet",
+            "FromPort": 443,
+            "IpProtocol": "tcp",
+            "ToPort": 443,
+          },
+        ],
+        "VpcId": Object {
+          "Ref": "VPCB9E5F0B4",
+        },
+      },
+      "Type": "AWS::EC2::SecurityGroup",
+    },
+    "simpleinstante1EFECA863": Object {
+      "DependsOn": Array [
+        "simpleec2roleACB147DC",
+      ],
+      "Properties": Object {
+        "AvailabilityZone": Object {
+          "Fn::Select": Array [
+            0,
+            Object {
+              "Fn::GetAZs": "",
+            },
+          ],
+        },
+        "IamInstanceProfile": Object {
+          "Ref": "simpleinstante1InstanceProfile30A01DE5",
+        },
+        "ImageId": Object {
+          "Ref": "SsmParameterValueawsserviceamiamazonlinuxlatestamzn2amihvmx8664gp2C96584B6F00A464EAD1953AFF4B05118Parameter",
+        },
+        "InstanceType": "t2.micro",
+        "KeyName": "simple-instance-1-key",
+        "SecurityGroupIds": Array [
+          Object {
+            "Fn::GetAtt": Array [
+              "simpleinstance1sg1026C7DF",
+              "GroupId",
+            ],
+          },
+        ],
+        "SubnetId": Object {
+          "Ref": "VPCasteriskSubnet1SubnetEE53BCBC",
+        },
+        "Tags": Array [
+          Object {
+            "Key": "Name",
+            "Value": "simple-instante-1",
+          },
+        ],
+        "UserData": Object {
+          "Fn::Base64": "#!/bin/bash
+#! /bin/bash
+# become root user
+sudo su
+
+# update dependencies
+yum -y update
+
+# we'll install 'expect' to input keystrokes/y/n/passwords
+yum -y install expect 
+
+# Install Apache
+yum -y install httpd
+
+# Start Apache
+service httpd start
+
+# Install PHP
+yum -y install php php-mysql
+# php 7 needed for latest wordpress
+amazon-linux-extras -y install php7.2 
+
+# Restart Apache
+service httpd restart
+
+# Install MySQL
+wget http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm
+rpm -ivh mysql-community-release-el7-5.noarch.rpm
+
+yum -y update 
+yum -y install mysql-server
+
+# Start MySQL
+service mysqld start
+
+# Create a database named blog
+mysqladmin -uroot create blog
+
+# Secure database
+# non interactive mysql_secure_installation with a little help from expect.
+
+SECURE_MYSQL=$(expect -c \\"
+
+set timeout 10
+spawn mysql_secure_installation
+
+expect \\\\\\"Enter current password for root (enter for none):\\\\\\"
+send \\\\\\"\\\\r\\\\\\"
+
+expect \\\\\\"Change the root password?\\\\\\"
+send \\\\\\"y\\\\r\\\\\\"
+expect \\\\\\"New password:\\\\\\"
+send \\\\\\"pl55w0rd\\\\r\\\\\\"
+expect \\\\\\"Re-enter new password:\\\\\\"
+send \\\\\\"pl55w0rd\\\\r\\\\\\"
+expect \\\\\\"Remove anonymous users?\\\\\\"
+send \\\\\\"y\\\\r\\\\\\"
+
+expect \\\\\\"Disallow root login remotely?\\\\\\"
+send \\\\\\"y\\\\r\\\\\\"
+
+expect \\\\\\"Remove test database and access to it?\\\\\\"
+send \\\\\\"y\\\\r\\\\\\"
+
+expect \\\\\\"Reload privilege tables now?\\\\\\"
+send \\\\\\"y\\\\r\\\\\\"
+
+expect eof
+\\")
+
+echo \\"$SECURE_MYSQL\\"
+
+# Change directory to web root
+cd /var/www/html
+
+# Download Wordpress
+wget http://wordpress.org/latest.tar.gz
+
+# Extract Wordpress
+tar -xzvf latest.tar.gz
+
+# Rename wordpress directory to blog
+mv wordpress blog
+
+# Change directory to blog
+cd /var/www/html/blog/
+
+# Create a WordPress config file 
+mv wp-config-sample.php wp-config.php
+
+#set database details with perl find and replace
+sed -i \\"s/database_name_here/blog/g\\" /var/www/html/blog/wp-config.php
+sed -i \\"s/username_here/root/g\\" /var/www/html/blog/wp-config.php
+sed -i \\"s/password_here/pl55w0rd/g\\" /var/www/html/blog/wp-config.php
+
+# create uploads folder and set permissions
+mkdir wp-content/uploads
+chmod 777 wp-content/uploads
+
+#remove wp file
+rm -rf /var/www/html/latest.tar.gz",
+        },
+      },
+      "Type": "AWS::EC2::Instance",
+    },
+    "simpleinstante1InstanceProfile30A01DE5": Object {
+      "Properties": Object {
+        "Roles": Array [
+          Object {
+            "Ref": "simpleec2roleACB147DC",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::InstanceProfile",
+    },
+  },
+  "Rules": Object {
+    "CheckBootstrapVersion": Object {
+      "Assertions": Array [
+        Object {
+          "Assert": Object {
+            "Fn::Not": Array [
+              Object {
+                "Fn::Contains": Array [
+                  Array [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                  ],
+                  Object {
+                    "Ref": "BootstrapVersion",
+                  },
+                ],
+              },
+            ],
+          },
+          "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI.",
+        },
+      ],
+    },
+  },
+}
+`;
