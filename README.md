@@ -1,5 +1,7 @@
 # simple-ec2
 
+Sobe uma instância EC2
+
 [ex1](https://dev.to/emmanuelnk/part-3-simple-ec2-instance-awesome-aws-cdk-37ia)
 
 [ex2](https://bobbyhadz.com/blog/aws-cdk-ec2-instance-example)
